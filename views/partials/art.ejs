@@ -1,0 +1,48 @@
+
+<style>
+    .post-feed a:hover{
+        color: black;
+    }
+</style>
+<!-- Imports -->
+<main class="site-main">
+  <div class="container">
+    <h1 class="mb-4">Articles: </h1>
+
+        <div class="container">
+            <section class="post-feed">
+               <% articles.forEach(article => { %> 
+                    <a class="post-card" href="/articles/<%= article.slug %>">
+
+                        <header class="post-card-header">
+                            <div class="post-card-image" style="background-image:url(/uploads/<%=article.image%> )"></div>
+                            <div class="post-card-tags">
+                                <span class="">Article</span>
+                            </div>
+                            <h2 class="post-card-title"> <%= article.title %> </h2>
+                        </header>
+                        <section class="post-card-excerpt"><%= article.description %> </section>
+                        
+
+                        <!--div class="card mt-4">
+                        <div class="card-body">
+                            <h4 class="card-title"><!%= article.title %></h4>
+                            <div class="card-subtitle text-muted mb-2">
+                            <!%= article.createdAt.toLocaleDateString() %>
+                            </div>
+                            <div class="card-text mb-2"><!%= article.description %></div>
+                            <a href="articles/<!%= article.slug %>" class="btn btn-primary">Read More</a>
+                            <a href="articles/edit/<!%= article.id %>" class="btn btn-info">Edit</a>
+                            <form action="/articles/<!%= article.id %>?_method=DELETE" method="POST" class="d-inline">
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                        </div>
+                        </div-->
+                    </a>
+                <% }) %>
+            </section>
+        </div>
+    </div>
+</main>
+
+

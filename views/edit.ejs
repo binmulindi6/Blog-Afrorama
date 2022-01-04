@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('./partials/head.ejs') %>
+  <style>
+  </style>
+</head>
+<body>
+  <%- include('./partials/header.ejs')  %>
+  <main class="site-main">
+    <div class="container">
+      <h1 class="mb-4">Edit Article</h1>
+
+      <form action="/articles" method="POST" encType="multipart/form-data">
+        <%- include('./partials/_form_fields_edit.ejs') %>
+      </form>
+    </div>
+  </main>
+
+  <%- include('./partials/footer.ejs')  %>
+</body>
+</html>

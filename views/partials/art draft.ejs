@@ -1,0 +1,37 @@
+
+<main class="site-main">
+    <div class="container">
+        <section class="post-feed">
+
+            <% if (datas.length > 0) {%> 
+                <% datas.forEach(datas => { %>
+
+                    <a class="post-card" href="/article/<!%= datas.id%>">
+                        <header class="post-card-header">
+                            <div class="post-card-image" style="background-image:url(/uploads/<!%=datas.img%> )"></div>
+                            <div class="post-card-tags">
+                                <span class="">Article</span>
+                            </div>
+                            <h2 class="post-card-title"> <!%= datas.name %> </h2>
+                        </header>
+                        <section class="post-card-excerpt"><!%= datas.snippet %> </section>
+                        <!--footer class="post-card-footer">
+                            <div class="post-card-footer-left">
+                                <div class="post-card-avatar">
+                                    <img class="author-profile-image" src="https://static.ghost.org/v2.0.0/images/ghost.png" alt="Ghost"/>
+                                </div>
+                                <span>Ghost</span>
+                            </div>
+                            <div class="post-card-footer-right">
+                                <div>2 min read</div>
+                            </div>
+                        </footer-->
+                    </a>
+                        <!% }) %>
+                    <!% } else { %> 
+                            <p>No Data to display</p>
+                    <!% }  %> 
+        </section>
+    </div>
+</main-->
+    

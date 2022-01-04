@@ -1,0 +1,37 @@
+<div class="form-group">
+  <label for="title">Title</label>
+  <input required value="<%= article.title %>" type="text" name="title" id="title" class="form-control">
+</div>
+<div class="form-group">
+  <label for="description">Description</label>
+  <textarea name="description" id="description" class="form-control"><%= article.description %></textarea>
+</div>
+<div class="form-group">
+  <label for="markdown">Markdown</label>
+  <textarea required name="markdown" id="markdown" class="form-control"><%= article.markdown %></textarea>
+</div>
+<div class="form-group input-grp">
+  <label for="image"> Your Image: </label> <br>
+  <input type="file" name="image" id="imgInp" accept=".jpg,.jpeg,.png" required />
+</div>
+<div class="form-group input-grp">
+  <img id="blah" src="#" alt="your image" height="250px" width="250px"/>
+</div>
+
+<a href="/" class="btn btn-secondary">Cancel</a>
+<button type="submit" class="btn btn-primary">Save</button>
+
+
+
+
+
+
+<script defer>
+        
+  imgInp.onchange = evt => {
+  const [file] = imgInp.files
+  if (file) {
+      blah.src = URL.createObjectURL(file)
+  }
+  }
+</script>
