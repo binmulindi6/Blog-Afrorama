@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/head.ejs') %>
+</head>
+<body onload="hideIt()">
+    <%- include('./partials/header.ejs')  %>
+    <main class="site-main">
+        <%- include('./partials/_contact_us_form.ejs')  %>
+    </main>
+    <%- include('./partials/footer.ejs')  %>
+
+    <script defer>
+        let form = document.getElementById('contact-form')
+        let error = document.getElementsByClassName("validation")
+        let fname = document.getElementById('fname');
+        let lname = document.getElementById('lname');
+        let email = document.getElementById('email');
+        let message = document.getElementById('message');
+        let btnSend = document.querySelector('.form_send_button')
+        let btnCancle = document.querySelector('.btn-danger')
+        
+        btnSend.addEventListener('click', formSubmit)
+        btnCancle.addEventListener('click', formFreeFields)
+
+        
+        function formSubmit(){
+            if (!formFieldCheck()){
+                event.preventDefault();
+            }
+        }
+
+        function hideIt(){
+            for(i = 0; i < error.length; i++){
+                error[i].style.display = 'none';
+            }
+        }
+
+        function showIt(){
+            for(i = 0; i < error.length; i++){
+                error[i].style.display = 'block';
+            }
+        }
+
+        function formFieldCheck(){
+            if(!fname.validity.valid || !email.validity.valid || !message.validity.valid){
+                showIt();
+                console.log('False');
+                return false;
+            }else{
+                console.log('true');
+                return true;
+            }
+        }
+
+        function formFreeFields(){
+            fname.value = "";
+            lname.value = "";
+            email.value = "";
+            message.value = "";
+            hideIt();
+        }
+    </script>
+</body>
+</html>

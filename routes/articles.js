@@ -13,18 +13,18 @@ router.use( express.static( node_path.join(__dirname, "public")));
 
 
 router.get('/new', (req, res) => {
-  res.render('new', { article: new Article() })
+  res.render('new', { article: new Article(), tittle: "New Article" })
 })
 
 router.get('/edit/:id', async (req, res) => {
   const article = await Article.findById(req.params.id)
-  res.render('edit', { article: article })
+  res.render('edit', { article: article, tittle: "Edit Article" })
 })
 
 router.get('/:slug', async (req, res) => {
   const article = await Article.findOne({ slug: req.params.slug })
   if (article == null) res.redirect('/')
-  res.render('show', { article: article })
+  res.render('show', { article: article, tittle: "Article Details" })
 })
 
 router.post('/', async (req, res, next) => {

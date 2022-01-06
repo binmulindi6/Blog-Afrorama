@@ -1,7 +1,7 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const Article = require('./models/article')
-const articleRouter = require('./routes/articles')
+
 const methodOverride = require('method-override')
 const app = express()
 const path = require('path')
@@ -15,17 +15,22 @@ mongoose.connect(dbURL, { useNewUrlParser : true, useUnifiedTopology: true})
 // default options
 app.use( express.static( path.join(__dirname, "public")));
 
+//routes
+const articleRouter = require('./routes/articles')
+const contactRouter = require('./routes/contact')
 
 app.set('view engine', 'ejs')
 app.use(express.urlencoded({ extended: false }))
 app.use(methodOverride('_method'))
+app.use('/articles', articleRouter)
+app.use(contactRouter)
 
 app.get('/', async (req, res) => {
   const articles = await Article.find().sort({ createdAt: 'desc' })
   res.render('index', { articles: articles })
 })
 
-app.use('/articles', articleRouter)
+
 // default options
 app.use( express.static( path.join(__dirname, "public")));
 

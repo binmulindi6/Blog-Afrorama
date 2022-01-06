@@ -10,7 +10,7 @@ let datas = []
 /* GET home page. */
 router.get('/home', (req, res, next) => {
   const articles = await Article.find().sort({ createdAt: 'desc' })
-  res.render('index', { articles: articles })
+  res.render('index', { articles: articles,title:"Home" })
   })
 
 
